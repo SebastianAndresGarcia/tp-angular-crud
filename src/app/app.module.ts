@@ -11,8 +11,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { DondeestamosComponent } from './components/dondeestamos/dondeestamos.component';
 import { IteminstrumentoComponent } from './components/iteminstrumento/iteminstrumento.component';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { KeysPipe } from './pipes/keys.pipe';
 import { ServinstrumentoService } from './servicio/servinstrumento.service';
+import { TablecrudComponent } from './components/tablecrud/tablecrud.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ServinstrumentoService } from './servicio/servinstrumento.service';
     BuscadorComponent,
     DondeestamosComponent,
     IteminstrumentoComponent,
-    KeysPipe,
+    TablecrudComponent
 
   ],
   imports: [
