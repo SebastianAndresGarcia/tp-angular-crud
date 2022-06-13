@@ -11,6 +11,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { DondeestamosComponent } from './components/dondeestamos/dondeestamos.component';
 import { IteminstrumentoComponent } from './components/iteminstrumento/iteminstrumento.component';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { KeysPipe } from './pipes/keys.pipe';
+import { ServinstrumentoService } from './servicio/servinstrumento.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     BuscadorComponent,
     DondeestamosComponent,
     IteminstrumentoComponent,
+    KeysPipe,
 
   ],
   imports: [
@@ -31,14 +34,9 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     HttpClientModule
 
   ],
-
+  providers: [ServinstrumentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private http: HttpClient) {
-    this.http.get('https://restcountries.eu/rest/v2/lang/es').subscribe((datosURL: any) => {
-      this.datos = datosURL;
-      console.log(datosURL);
-    });
-  }
+  
 }

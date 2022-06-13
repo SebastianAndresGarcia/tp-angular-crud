@@ -15,7 +15,7 @@ export class BuscadorComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       this.termino = params['termino'];
-      this.instrumentosArr = this.serviinstrumento.buscarInstrumentos(params['termino']);
+      //this.instrumentosArr = this.serviinstrumento.buscarInstrumentos(params['termino']);
     });
   }
   public verInstrumento(idx:string){

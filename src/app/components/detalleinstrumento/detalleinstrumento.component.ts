@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServinstrumentoService } from 'src/app/servicio/servinstrumento.service';
+import { instrumento } from 'src/modelo/instrumento';
 
 @Component({
   selector: 'detalleinstrumento',
@@ -8,14 +9,19 @@ import { ServinstrumentoService } from 'src/app/servicio/servinstrumento.service
   styleUrls: ['./detalleinstrumento.component.css']
 })
 export class DetalleinstrumentoComponent implements OnInit {
-  instrumento: any;
+  instru: instrumento = new instrumento;
   constructor(private serviinstrumento: ServinstrumentoService, private activatedRoute: ActivatedRoute) {
 
-    //console.log("ID PARAM " + this.activatedRoute.params['id']);
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params['id'])
-      this.instrumento = this.serviinstrumento.getInstrumentoXId(params['id'])
-    })
+    this.activatedRoute.params.subscribe(params =>{
+      this.serviinstrumento.getInstrumentoXIdFecth(params['id'])
+      .subscribe((dataInstrumentos: { [x: string]: instrumento; }) => {
+        for(let i in dataInstrumentos){
+          console.log(dataInstrumentos[i]);
+          this.instru=(dataInstrumentos[i]);
+        }
+        
+      })
+    }) 
   }
 
   ngOnInit(): void {
