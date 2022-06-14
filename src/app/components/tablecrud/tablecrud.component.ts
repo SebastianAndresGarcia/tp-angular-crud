@@ -32,5 +32,12 @@ export class TablecrudComponent implements OnInit {
       
     })
   }
+  delete(idinstrumento:number){
+    var opcion = confirm("Esta seguro que desea eliminar el plato?");
+    if (opcion == true) {
+      this.serviinstrumento.deleteInstrumento(idinstrumento);
+      location.reload();
+    }
 
+  }
 }

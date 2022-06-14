@@ -13,6 +13,7 @@ import { IteminstrumentoComponent } from './components/iteminstrumento/iteminstr
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { ServinstrumentoService } from './servicio/servinstrumento.service';
 import { TablecrudComponent } from './components/tablecrud/tablecrud.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TablecrudComponent } from './components/tablecrud/tablecrud.component';
     BuscadorComponent,
     DondeestamosComponent,
     IteminstrumentoComponent,
-    TablecrudComponent
+    TablecrudComponent,
+    FormularioComponent
 
   ],
   imports: [
