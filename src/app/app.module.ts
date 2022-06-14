@@ -14,6 +14,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { ServinstrumentoService } from './servicio/servinstrumento.service';
 import { TablecrudComponent } from './components/tablecrud/tablecrud.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
 
   ],

@@ -30,17 +30,17 @@ export class ServinstrumentoService {
   }
   //lee todos los instrumentos
   getInstrumentos():any {
-    return this.http.get("http://localhost:3000/instrumentos").pipe(
+    return this.http.get("http://localhost:3001/instrumentos").pipe(
       map(instrumentosData => instrumentosData));
   }
   //busca un instrumento por el id
   getInstrumentoXIdFecth(idx: string):any {
-    return this.http.get("http://localhost:3000/instrumentos/" + idx).pipe(
+    return this.http.get("http://localhost:3001/instrumentos/" + idx).pipe(
       map(instrumentoencontrado => instrumentoencontrado));
   }
   
   async deleteInstrumento(idinstrumento: number){
-    let urlServer = 'http://localhost:3000/eliminarInstrumento/'+idinstrumento;
+    let urlServer = 'http://localhost:3001/eliminarInstrumento/'+idinstrumento;
     console.log(urlServer);
     let result = await fetch(urlServer, {
         method: 'DELETE',
@@ -52,10 +52,10 @@ export class ServinstrumentoService {
     });
   }
   async guardarInstrumento(ins:instrumento){
-    let urlServer = 'http://localhost:3000/crearInstrumento/';
+    let urlServer = 'http://localhost:3001/crearInstrumento/';
     let method:string= 'POST';
     if(ins.id!==0){
-    urlServer = 'http://localhost:3000/actualizarInstrumento/'+ins.id;
+    urlServer = 'http://localhost:3001/actualizarInstrumento/'+ins.id;
     method = 'PUT';
     }
     await fetch(urlServer, { 
@@ -69,18 +69,5 @@ export class ServinstrumentoService {
   }
 
 
-  getPlatosFromDataBaseServlet() {
-    return this.http.get("http://localhost:3000/WebAppServer/RestoServlet?action = listar").pipe(
-     map(instrumentosData => instrumentosData));
-  }
   
-  getPlatoEnBaseDatosXIdServlet(idx: string) {
-    return this.http.get("http://localhost:3000/WebAppServer/RestoServlet?action = buscar & idPlato=" + idx).pipe(
-     map(instrumentoencontrado => instrumentoencontrado));
-  }
-  
- getPlatosBusquedaFromDataBaseServlet (termino:string){
-  return this.http.get("http://localhost:3000/WebAppServer/RestoServlet?action=busqueda&termino=" + termino).pipe(
-  map( instrumentosSearch => instrumentosSearch));
-  }
 }

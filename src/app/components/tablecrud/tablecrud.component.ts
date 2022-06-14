@@ -17,12 +17,6 @@ export class TablecrudComponent implements OnInit {
   collectionSize = this.instrumentosArr.length;
 
   constructor(private serviinstrumento: ServinstrumentoService, private activatedRoute: ActivatedRoute) {
-    
-  }
-
-
-
-  ngOnInit(): void {
     this.serviinstrumento.getInstrumentos() 
     .subscribe((dataInstrumentos: { [x: string]: instrumento; }) => {
       for(let instrumento in dataInstrumentos){
@@ -31,6 +25,12 @@ export class TablecrudComponent implements OnInit {
       }
       
     })
+  }
+
+
+
+  ngOnInit(): void {
+    
   }
   delete(idinstrumento:number){
     var opcion = confirm("Esta seguro que desea eliminar el plato?");
