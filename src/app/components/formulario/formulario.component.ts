@@ -39,8 +39,8 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
   }
   async guardar() {
-    this.serviinstrumento.guardarInstrumento(this.instru);
-    location.reload();
+    await this.serviinstrumento.guardarInstrumento(this.instru);
+    //location.reload();
     this.router.navigate(['/tablecrud']);
   }
 

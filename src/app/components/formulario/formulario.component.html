@@ -1,10 +1,13 @@
 <h3>Instrumento <small>{{ instru.instrumento }}</small></h3>
-<button class="btn btn-outline-danger" [routerLink]="['/tablecrud']">Regresar</button>
-<button class="btn btn-outline-success" (click)="addNew(forma)">Nuevo</button>
+<div class="button" >
+  <div class="col" align="center" justify="center">  
+    <button class="btn btn-outline-danger" style="margin-right: 5px;" [routerLink]="['/tablecrud']">Regresar</button>
+    <button class="btn btn-outline-success" style="margin-left: 5px;" (click)="addNew(forma)">Nuevo</button></div>
+</div>
 <hr>
 
-<div class="row animated fadeIn fast">
-    <div class="col-md-12">
+<div class="row" style="padding-left: 30%; padding-right: 30%; padding-top:1%; padding-bottom: 1%;">
+    <div class="col"  justify="center">
         <form (ngSubmit)="guardar()" #forma="ngForm">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
@@ -43,12 +46,12 @@
             </div>
             <div class="form-group">
                 <label for="textarea" class="form-label">Descripcion</label>
-                <textarea class="form-control" id="textarea" [(ngModel)]="instru.descripcion" rows="3"></textarea>
+                <textarea class="form-control" id="descripcion" [(ngModel)]="instru.descripcion" name="descripcion" placeholder="descripcion" rows="3"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="padding-top: 1%;">
                 <button type="button" class="btn btn-outline-primary" (click)="guardar()">Guardar instrumento</button>
 
-                <span style="text-align: right; width: 500; color: blue; font-weight: bold">&nbsp;&nbsp;&nbsp; </span>
+                <span style="text-align: right; width: 500; color: blue; font-weight: bold;">&nbsp;&nbsp;&nbsp; </span>
             </div>
         </form>
     </div>
