@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServinstrumentoService } from 'src/app/servicio/servinstrumento.service';
-import { instrumento } from 'src/modelo/instrumento';
+import { ServbannerService } from 'src/app/servicio/servibanner.service';
+import { banner } from 'src/modelo/banner';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,27 +11,23 @@ import { NgForm } from '@angular/forms';
 })
 export class FormularioComponent implements OnInit {
 
-  instru: instrumento = {
+  bann: banner = {
     id: 0,
-    instrumento: "",
-    marca: "",
-    modelo: "",
-    precio: 0,
-    costoEnvio: "",
-    imagen: "",
-    cantidadVendida: 0,
-    descripcion: ""
+    urlImageBanner: "",
+    textCaption: "",
+    descripcionImagen: "",
+    ordenSlider: ""
   };
-  constructor(private serviinstrumento: ServinstrumentoService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private servibanner: ServbannerService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     this.activatedRoute.params.subscribe(params => {
-      this.serviinstrumento.getInstrumentoXIdFecth(params['id'])
-        .subscribe((dataInstrumentos: { [x: string]: instrumento; }) => {
-          for (let i in dataInstrumentos) {
-            console.log(dataInstrumentos[i]);
-            this.instru = (dataInstrumentos[i]);
+      this.servibanner.getBannerXIdFecth(params['id'])
+        .subscribe((dataBanner: { [x: string]: banner; }) => {
+          for (let i in dataBanner) {
+            console.log(dataBanner[i]);
+            this.bann = (dataBanner[i]);
           }
-
+          console.log("objeto "+this.bann.descripcionImagen)
         })
     })
   }
@@ -39,7 +35,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
   }
   async guardar() {
-    await this.serviinstrumento.guardarInstrumento(this.instru);
+    await this.servibanner.guardarBanner(this.bann);
     //location.reload();
     this.router.navigate(['/tablecrud']);
   }
@@ -48,14 +44,10 @@ export class FormularioComponent implements OnInit {
     this.router.navigate(['/formulario', '0']);
     formu.reset({
       id: 0,
-      instrumento: "",
-      marca: "",
-      modelo: "",
-      precio: 0,
-      costoEnvio: "",
-      imagen: "",
-      cantidadVendida: 0,
-      descripcion: ""
+      urlImageBanner: "",
+      textCaption: "",
+      descripcionImagen: "",
+      ordenSlider: ""
     });
   }
 }

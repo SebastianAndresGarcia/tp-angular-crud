@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { instrumento } from 'src/modelo/instrumento';
-import { ServinstrumentoService } from 'src/app/servicio/servinstrumento.service';
+import { banner } from 'src/modelo/banner';
+import { ServbannerService } from 'src/app/servicio/servibanner.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -11,31 +11,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TablecrudComponent implements OnInit {
 
-  page = 1;
-  pageSize = 4;
-  instrumentosArr: instrumento[] = [];
-  collectionSize = this.instrumentosArr.length;
 
-  constructor(private serviinstrumento: ServinstrumentoService, private activatedRoute: ActivatedRoute) {
+  bannerArr: banner[] = [];
+  collectionSize = this.bannerArr.length;
+
+  constructor(private servibanner: ServbannerService, private activatedRoute: ActivatedRoute) {
     
   }
 
 
 
   ngOnInit(): void {
-    this.serviinstrumento.getInstrumentos() 
-    .subscribe((dataInstrumentos: { [x: string]: instrumento; }) => {
-      for(let instrumento in dataInstrumentos){
-        console.log(dataInstrumentos[instrumento]);
-        this.instrumentosArr.push(dataInstrumentos[instrumento]);
+    this.servibanner.getBanners() 
+    .subscribe((dataBanner: { [x: string]: banner; }) => {
+      for(let bann in dataBanner){
+        console.log(dataBanner[bann]);
+        this.bannerArr.push(dataBanner[bann]);
       }
       
     })
   }
-  delete(idinstrumento:number){
-    var opcion = confirm("Esta seguro que desea eliminar el plato?");
+  delete(idbanner:number){
+    console.log("idbanner "+idbanner)
+    var opcion = confirm("Esta seguro que desea eliminar el banner?");
     if (opcion == true) {
-      this.serviinstrumento.deleteInstrumento(idinstrumento);
+      this.servibanner.deleteBanner(idbanner);
       location.reload();
     }
 

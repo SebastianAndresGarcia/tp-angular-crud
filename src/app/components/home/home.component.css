@@ -1,11 +1,4 @@
 
-.img{ 
-    min-height: 100vh;
-    width: 100%;
-    background-color: papayawhip; 
-    margin: 0 auto;
-    opacity: 0.5;
-}
 .row {
     text-align: justify;
     align-items: center;
@@ -23,15 +16,9 @@
     margin-left: auto;
   }
   
-  .h1home {
+  .h4{
     text-align: center;
     color: rgb(143, 4, 4);
-    padding-bottom: 20px;
+    padding-bottom: 50px;
   }
   
-  .h2home {
-    padding-bottom: 30px;
-  }
-  .h2{ 
-    color:black;
-  }
